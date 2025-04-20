@@ -1,0 +1,1452 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+
+body {
+  background-color: rgb(18, 18, 18) !important;
+  text-transform: capitalize;
+}
+/* Base Styles */
+.popular-anime {
+  width: 100%;
+  height: 100vh;
+  background-color: rgb(0, 0, 0);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Video Container */
+#video-container {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 0;
+}
+
+#video-player {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.video-fallback {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: url(images/official-solo-leveling-season-2-key-visual-wallpaper-v0-iymxfnoaf3pd1.webp) no-repeat center center/cover;
+  z-index: 0;
+  opacity: 0.6;
+}
+
+/* Overlay Gradient */
+header::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(180deg, transparent, rgba(0, 0, 0, 0.8));
+  z-index: 1;
+  left: 0;
+  bottom: 0;
+}
+
+/* Navbar Styles */
+.navbar {
+  position: relative;
+  z-index: 1000;
+  padding: 0.5rem 1rem;
+  background: rgba(0, 0, 0, 0.5) !important;
+  backdrop-filter: blur(5px);
+  transition: all 0.3s ease;
+}
+
+.navbar-brand img.logo {
+  width: 80px;
+  transition: transform 0.3s ease;
+}
+
+.navbar-brand img.logo:hover {
+  transform: scale(1.05);
+}
+
+
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 0.8%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+  width: 1.25em;
+  height: 1.25em;
+}
+
+/* Dropdown Menu */
+.dropdown-menu {
+  min-width: 800px !important;
+  padding: 0 !important;
+  background: rgba(10, 10, 15, 0.98) !important;
+  border: 1px solid rgba(255, 0, 60, 0.2) !important;
+  border-radius: 12px !important;
+  backdrop-filter: blur(12px) !important;
+  box-shadow: 0 12px 32px rgba(255, 0, 60, 0.15) !important;
+  overflow: hidden !important;
+}
+
+.dropdown-menu .row {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 0.5rem !important;
+  margin: 0 !important;
+  padding: 1rem !important;
+}
+
+.dropdown-menu .col-md-3 {
+  flex: 0 0 23% !important;
+  max-width: 23% !important;
+  padding: 0.5rem !important;
+}
+
+.dropdown-item {
+  color: rgba(255, 255, 255, 0.9) !important;
+  padding: 0.75rem 1rem !important;
+  border-radius: 8px !important;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+  text-decoration: none !important;
+  display: block !important;
+  background: rgba(255, 0, 60, 0.05) !important;
+  border-left: 3px solid transparent !important;
+  margin: 0.25rem 0 !important;
+  font-size: 0.85rem;
+}
+
+.dropdown-item:hover {
+  background: rgba(255, 0, 60, 0.2) !important;
+  color: #ff003c !important;
+  transform: translateX(5px) !important;
+  box-shadow: 0 4px 12px rgba(255, 0, 60, 0.25) !important;
+  border-left: 3px solid #ff003c !important;
+}
+
+/* Search Bar */
+header nav .search_user {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px; /* Added gap for better spacing */
+}
+
+/* Search Input */
+header nav .search_user input {
+  padding: 8px 40px 8px 15px; /* Adjusted padding */
+  border: none;
+  border-radius: 25px; /* More rounded corners */
+  outline: none;
+  background-color: rgba(255, 255, 255, 0.2); /* Slightly more transparent */
+  color: white;
+  font-size: 14px;
+  transition: all 0.3s ease;
+  width: 200px; /* Fixed width for better UX */
+}
+
+header nav .search_user input::placeholder {
+  color: rgba(255, 255, 255, 0.7); /* Lighter placeholder */
+}
+
+header nav .search_user input:focus {
+  background-color: rgba(255, 255, 255, 0.3); /* Highlight on focus */
+  width: 250px; /* Expand width on focus */
+}
+
+/* User Image */
+header nav .search_user img {
+  width: 30px; /* Slightly larger */
+  height: 30px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.3); /* Subtle border */
+  transition: all 0.3s ease;
+}
+
+header nav .search_user img:hover {
+  border-color: rgba(255, 255, 255, 0.7); /* Highlight on hover */
+}
+
+/* Search Results Container */
+header nav .search_user .search {
+  position: absolute;
+  min-width: 325px; /* Wider for better readability */
+  max-height: 250px; /* Limit height */
+  right: 0;
+  top: 50px;
+  z-index: 100000;
+  background-color: rgba(0, 0, 0, 0.9); /* Darker background */
+  backdrop-filter: blur(10px); /* Frosted glass effect */
+  border-radius: 10px; /* More rounded corners */
+  padding: 10px;
+  overflow-y: auto;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* Subtle shadow */
+}
+
+/* Show search results when visible */
+header nav .search_user .search.visible {
+  visibility: visible;
+  opacity: 1;
+}
+
+/* Scrollbar Styling */
+header nav .search_user .search::-webkit-scrollbar {
+  width: 6px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 5px;
+}
+
+header nav .search_user .search::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.4);
+  border-radius: 5px;
+}
+
+header nav .search_user .search:hover::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.6); /* Brighter on hover */
+}
+
+/* Search Card Styling */
+header nav .search_user .search .card {
+  display: flex;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 10px;
+  border-radius: 8px;
+  width: 100%;
+  height: 115px; /* Slightly taller */
+  text-decoration: none;
+  margin-bottom: 8px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+header nav .search_user .search .card:hover {
+  background-color: rgba(255, 255, 255, 0.2); /* Highlight on hover */
+  transform: translateY(-2px); /* Slight lift effect */
+}
+
+header nav .search_user .search .card img {
+  width: 50px;
+  height: 60px; /* Square images */
+  border-radius: 5px; /* Slightly rounded */
+  margin-right: 10px;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+/* Card Content */
+header nav .search_user .search .card .cont {
+  flex-grow: 1;
+  color: aliceblue;
+  min-width: 0;
+}
+
+header nav .search_user .search .card .cont h3 {
+  font-size: 14px;
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin: 0;
+  line-height: 1.4;
+}
+
+header nav .search_user .search .card .cont p {
+  font-size: 12px;
+  margin: 0;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+header nav .search_user .search .card .cont span {
+  background-color: #ffeb3b; /* Brighter yellow */
+  color: black;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-weight: bold;
+  margin-right: 5px;
+  font-size: 10px;
+}
+
+/* Main Content */
+.content {
+  position: relative;
+  color: #fff;
+  padding: 1.5rem;
+  z-index: 100;
+  margin-top: 2rem;
+  max-width: 1200px;
+}
+
+.content h1 {
+  font-size: clamp(1.5rem, 4vw, 2.5rem); /* Reduced from original */
+  margin-bottom: 0.8rem;
+}
+
+.content p {
+  font-size: clamp(0.65rem, 1.5vw, 0.85rem); /* Reduced from original */
+  width: 100%;
+  max-width: 500px;
+  margin-bottom: 0.8rem;
+}
+
+.details {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.5rem;
+  margin: 1rem 0;
+  align-items: center;
+}
+
+.details h3, .details h4, .details h5, .details h6 {
+  font-size: 0.7rem;
+  margin: 0;
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+}
+
+.details h3 span {
+  background: #ffeb3b;
+  color: #000;
+  padding: 0.15rem 0.5rem;
+  margin: 0 0.5rem;
+  font-weight: 600;
+  border-radius: 3px;
+  font-size: 0.75rem;
+}
+
+.details i.bi-star-fill {
+  color: #ffeb3b;
+  margin-left: 0.25rem;
+  font-size: 0.9rem;
+}
+
+/* Buttons */
+.btns {
+  margin-top: 1.5rem;
+  display: flex;
+  gap: 1rem;
+}
+
+.btns a {
+  padding: 0.75rem 1.5rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  background: linear-gradient(90deg, #ff0000, #660000);
+  border-radius: 5px;
+  color: #fff;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  border: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  box-shadow: 0 4px 15px rgba(255, 0, 0, 0.3);
+}
+
+.btns a:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(255, 0, 0, 0.4);
+}
+
+/* Popular Section */
+.popular-section {
+  position: absolute !important;
+  bottom: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  padding: 1rem 1rem 1rem !important;
+  z-index: 100 !important;
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.9)) !important;
+}
+
+.popular-section h4 {
+  font-size: 1.25rem !important;
+  margin-bottom: 1rem !important;
+  padding-left: 0.5rem !important;
+  font-weight: 600 !important;
+  color: white !important;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5) !important;
+}
+
+.popular-anime .cards {
+  display: flex !important;
+  overflow-x: auto !important;
+  scroll-snap-type: x mandatory !important;
+  gap: 0.5rem !important;
+  padding-bottom: 1rem !important;
+  -webkit-overflow-scrolling: touch !important;
+  transition: 0.3s !important;
+  position: relative !important;
+}
+
+header section .cards::-webkit-scrollbar {
+  display: none !important;
+} 
+
+header section .cards .card {
+  position: relative !important;
+ width: 125px !important;
+  height: 250px !important;
+  border: none !important;
+  border-radius: 8px !important;
+  margin-right: 10px !important;
+  background-color: #000 !important;
+  box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.308) !important;
+  transition: 0.3s ease !important;
+  overflow: hidden !important;
+  cursor: pointer !important;
+}
+
+header section .cards .card .poster {
+  width: 100% !important;
+  height: 100% !important;
+  border-radius: 8px !important;
+  object-fit: cover !important;
+  overflow: hidden !important;
+}
+
+header section .cards .card:hover {
+  min-width: 335px !important;
+  transform: scale(1.05) !important;
+}
+
+header section .cards .card .rest_card {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 8px !important;
+  left: 0;
+  top: 0;
+  z-index: 99999;
+  opacity: 0;
+  transition: 0.5s ease;
+  background: rgba(0, 0, 0, 0.7);
+  overflow: hidden;
+}
+
+header section .cards .card .rest_card img {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 8px !important;
+  z-index: -1;
+}
+
+header section .cards .card .rest_card::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(180deg, transparent, rgba(0, 0, 0, 0.9));
+  z-index: 1;
+  left: 0;
+  bottom: 0;
+  border-radius: 8px !important;
+}
+
+header section .cards .card .rest_card .cont {
+  position: absolute;
+  width: 100%;
+  bottom: 10px;
+  left: 0;
+  color: white;
+  padding: 0px 20px;
+  z-index: 2;
+}
+
+header section .cards .card .rest_card .cont h4 {
+  font-size: 16px;
+  margin: 0;
+  color: #fff;
+}
+
+header section .cards .card .rest_card .cont .sub {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 5px;
+}
+
+header section .cards .card .rest_card .cont .sub p {
+  font-size: 12px;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.692);
+  margin: 0;
+}
+
+header section .cards .card .rest_card .cont .sub h3 {
+  color: white;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  margin: 0;
+}
+
+header section .cards .card .rest_card .cont .sub h3 span {
+  background: yellow;
+  color: #000;
+  padding: 0px 3px;
+  margin: 0px 5px 0px 10px;
+  font-weight: 500;
+  border-radius: 2px;
+}
+
+header section .cards .card:hover .rest_card {
+  opacity: 1;
+}
+
+/* Slider Buttons */
+.popular-anime .slider-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 75%;
+  width: 70px; /* Wider for smoother gradient */
+  margin: 0;
+  padding: 0;
+  border: none;
+  color: white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  z-index: 500000;
+  opacity: 1;
+  transition:  0.3s ease;
+}
+
+.popular-anime .left-button {
+  left: 0;
+  background: 
+    linear-gradient(
+      90deg, 
+      rgba(0, 0, 0, 0.5) 0%, 
+      rgba(0, 0, 0, 0.5) 50%,
+      rgba(0, 0, 0, 0) 100%
+    );
+    transition: 0.3s;
+}
+
+
+.popular-anime .right-button {
+  right: 0;
+  background: 
+    linear-gradient(
+      270deg, 
+      rgba(0, 0, 0, 0.5) 0%, 
+      rgba(0, 0, 0, 0.5) 50%,
+      rgba(0, 0, 0, 0) 100%
+    );
+    transition: 0.3s;
+}
+
+.popular-anime .left-button:hover {
+  left: 0;
+  background: 
+    linear-gradient(
+      90deg, 
+      rgba(0, 0, 0, 0.9) 0%, 
+      rgba(0, 0, 0, 0.7) 50%,
+      rgba(0, 0, 0, 0) 100%
+    );
+}
+
+/* Right button - Dark to transparent gradient (mirrored) */
+.popular-anime .right-button:hover {
+  right: 0;
+  background: 
+    linear-gradient(
+      270deg, 
+      rgba(0, 0, 0, 0.9) 0%, 
+      rgba(0, 0, 0, 0.7) 50%,
+      rgba(0, 0, 0, 0) 100%
+    );
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 767px) {
+  .navbar {
+    padding: 0.5rem;
+  }
+  
+  .navbar-brand img.logo {
+    width: 50px;
+  }
+  
+  .nav-link {
+    padding: 0.5rem !important;
+  }
+  
+  .dropdown-menu {
+    min-width: 100% !important;
+    margin-top: 0.5rem;
+  }
+  
+  .dropdown-menu .row {
+    flex-direction: column;
+  }
+  
+  .dropdown-menu .col-md-3 {
+    flex: 0 0 100% !important;
+    max-width: 100% !important;
+  }
+  
+  .search_user input {
+    min-width: 100px;
+    padding: 0.35rem 0.75rem;
+  }
+  
+  .content {
+    padding: 1rem;
+    margin-top: 1rem;
+  }
+  
+  .content h1 {
+    font-size: 1.75rem;
+  }
+  
+  .content p {
+    font-size: 0.8rem;
+    max-width: 100%;
+  }
+  
+  .details {
+    gap: 0.5rem;
+  }
+  
+  .details h3, .details h4, .details h5, .details h6 {
+    font-size: 0.75rem;
+  }
+  
+  .btns {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  
+  .btns a {
+    width: 100%;
+    padding: 0.75rem;
+  }
+  
+  .card {
+    width: 130px !important;
+    height: 125px !important;
+  }
+  
+  .popular-section {
+    padding: 0.75rem 0.75rem 1.5rem;
+  }
+  
+  .popular-section h4 {
+    font-size: 1.1rem;
+    margin-bottom: 0.75rem;
+  }
+}
+
+/* Tablet Responsiveness */
+@media (min-width: 768px) and (max-width: 991px) {
+  .content {
+    padding: 2rem;
+  }
+  
+  .card {
+    width: 160px;
+    height: 230px;
+  }
+  
+  .popular-anime .slider-button {
+    display: flex;
+  }
+}
+
+/* Desktop Responsiveness */
+@media (min-width: 992px) {
+  .content {
+    padding: 3rem;
+  }
+  
+  .content p {
+    width: 50%;
+  }
+  
+  .card {
+    width: 180px;
+    height: 250px;
+  }
+  
+  .popular-anime .slider-button {
+    display: flex;
+    width: 50px;
+    height: 50px;
+  }
+  
+  .popular-anime .slider-button i {
+    font-size: 1.5rem;
+  }
+  
+ .popular-anime  .left-button {
+    left: 20px;
+  }
+  
+ .popular-anime  .right-button {
+    right: 20px;
+  }
+}
+
+/* Large Desktop Screens */
+@media (min-width: 1200px) {
+  .card {
+    width: 200px;
+    height: 280px;
+  }
+}
+
+/* Touch Device Specific Styles */
+@media (hover: none) and (pointer: coarse) {
+  .card {
+    width: 160px;
+  }
+  
+  .card .rest_card {
+    opacity: 1;
+    background: rgba(0, 0, 0, 0.5);
+  }
+  
+  .popular-anime .slider-button {
+    opacity: 1 !important;
+  }
+  
+  .btns a {
+    padding: 1rem 1.5rem;
+  }
+}
+
+/* Mobile Responsiveness - Cards Only */
+@media (max-width: 767px) {
+  header section .cards {
+    gap: 0.5rem;
+    padding-left: 0.5rem; /* Add space from left edge */
+    padding-right: 0.5rem; /* Add space from right edge */
+  }
+  
+  header section .cards .card {
+    min-width: 120px; /* Slightly wider for better proportions */
+    height: 180px; /* Adjusted height */
+    margin-right: 8px; /* Reduced margin */
+    border-radius: 6px; /* Slightly smaller radius */
+  }
+  
+  header section .cards .card:hover {
+    min-width: 280px; /* Adjusted expanded size */
+    transform: scale(1.03); /* More subtle scale */
+  }
+  
+  header section .cards .card .rest_card .cont {
+    padding: 0px 15px; /* Slightly less padding */
+  }
+  
+  header section .cards .card .rest_card .cont h4 {
+    font-size: 14px; /* Slightly smaller font */
+  }
+  
+  header section .cards .card .rest_card .cont .sub p,
+  header section .cards .card .rest_card .cont .sub h3 {
+    font-size: 11px; /* Smaller text */
+  }
+}
+
+/* Tablet Responsiveness - Cards Only */
+@media (min-width: 768px) and (max-width: 991px) {
+  header section .cards {
+    gap: 0.65rem;
+  }
+  
+  header section .cards .card {
+    min-width: 140px;
+    height: 210px;
+  }
+  
+  header section .cards .card:hover {
+    min-width: 300px;
+  }
+}
+
+/* Small Desktop Screens - Cards Only */
+@media (min-width: 992px) and (max-width: 1199px) {
+  header section .cards {
+    gap: 0.7rem;
+  }
+  
+  header section .cards .card {
+    min-width: 160px;
+    height: 240px;
+  }
+  
+  header section .cards .card:hover {
+    min-width: 320px;
+  }
+}
+
+/* Large Desktop Screens - Cards Only */
+@media (min-width: 1200px) {
+  header section .cards {
+    gap: 0.75rem;
+  }
+  
+  header section .cards .card {
+    min-width: 180px;
+    height: 270px;
+  }
+  
+  header section .cards .card:hover {
+    min-width: 350px;
+  }
+}
+
+/* Very Small Mobile Devices */
+@media (max-width: 400px) {
+  header section .cards .card {
+    min-width: 110px;
+    height: 165px;
+  }
+  
+  header section .cards .card:hover {
+    min-width: 260px;
+  }
+}
+
+/* Tall Mobile Devices */
+@media (max-width: 767px) and (min-height: 700px) {
+  header section .cards .card {
+    height: 200px;
+  }
+}
+
+.upcoming-anime {
+  position: relative;
+  margin: 0 auto;
+  max-width: 1800px;
+  overflow: hidden;
+}
+
+.upcoming-anime h4 {
+  padding: 1.5rem 2rem;
+  color: white;
+  font-size: clamp(1.75rem, 3vw, 1.5rem);
+  font-weight: bold;
+  margin: 0;
+}
+
+.cards-container {
+  display: flex;
+  gap: 25px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding: 0 2rem;
+  position: relative;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.cards-container::-webkit-scrollbar {
+  display: none;
+}
+
+/* Card container */
+.upcoming-card {
+  width: clamp(265px, 36vw, 260px);
+  height: auto;
+  min-height: 400px;
+  cursor: pointer;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0; 
+  overflow: hidden;
+}
+
+/* Poster section */
+.poster-container {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 2/3;
+}
+
+.poster-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.upcoming-card:hover .poster-container img {
+  transform: scale(1.05);
+}
+
+/* Title section */
+.title-container {
+  padding: 1rem;
+  min-height: 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.title-container .title {
+  margin: 0;
+  font-size: clamp(1rem, 1.2vw, 1.2rem);
+  font-weight: 600;
+  color: white;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.subtitle {
+  font-size: clamp(0.7rem, 0.8vw, 0.8rem);
+  color: #aaa;
+  margin-top: 0.3rem;
+}
+
+/* Hover overlay */
+.details-container {
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  right: 0;
+  bottom: 0;
+  width: 105%;
+  height: 105%;
+  padding: 1rem;
+  color: white;
+  background: rgba(0, 0, 0, 0.85);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  backdrop-filter: blur(8px);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.upcoming-card:hover .details-container {
+  opacity: 1;
+}
+
+/* Details content */
+.details-container .title {
+  font-size: clamp(1.1rem, 1.4vw, 1.4rem);
+  margin-bottom: 0.5rem;
+}
+
+.genre-list {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.8rem;
+}
+
+.genre-list span {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 0.3rem 0.8rem;
+  border-radius: 20px;
+  font-size: clamp(0.7rem, 0.8vw, 0.8rem);
+  font-weight: 500;
+}
+
+.rating-badge {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 0.4rem 0.8rem;
+  border-radius: 20px;
+  width: fit-content;
+  font-size: clamp(0.8rem, 1vw, 1rem);
+}
+
+.rating-badge .fa-star {
+  color: #f5c518;
+  font-size: clamp(0.8rem, 1vw, 1rem);
+}
+
+.synopsis {
+  font-size: clamp(0.65rem, 0.75vw, 0.75rem);
+  line-height: 1.4;
+  color: #cccccc;
+  margin-top: 0.8rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.upcoming-anime .slider-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 75%;
+  width: 70px; /* Wider for smoother gradient */
+  margin: 0;
+  padding: 0;
+  border: none;
+  color: white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  z-index: 500000;
+  opacity: 1;
+  transition:  0.3s ease;
+}
+
+.upcoming-anime .left-button {
+  left: 0;
+  background: 
+    linear-gradient(
+      90deg, 
+      rgba(0, 0, 0, 0.5) 0%, 
+      rgba(0, 0, 0, 0.5) 50%,
+      rgba(0, 0, 0, 0) 100%
+    );
+    transition: 0.3s;
+}
+
+
+.upcoming-anime .right-button {
+  right: 0;
+  background: 
+    linear-gradient(
+      270deg, 
+      rgba(0, 0, 0, 0.5) 0%, 
+      rgba(0, 0, 0, 0.5) 50%,
+      rgba(0, 0, 0, 0) 100%
+    );
+    transition: 0.3s;
+}
+
+.upcoming-anime .left-button:hover {
+  left: 0;
+  background: 
+    linear-gradient(
+      90deg, 
+      rgba(0, 0, 0, 0.9) 0%, 
+      rgba(0, 0, 0, 0.7) 50%,
+      rgba(0, 0, 0, 0) 100%
+    );
+}
+
+/* Right button - Dark to transparent gradient (mirrored) */
+.upcoming-anime .right-button:hover {
+  right: 0;
+  background: 
+    linear-gradient(
+      270deg, 
+      rgba(0, 0, 0, 0.9) 0%, 
+      rgba(0, 0, 0, 0.7) 50%,
+      rgba(0, 0, 0, 0) 100%
+    );
+}
+
+
+/* For mobile */
+@media (max-width: 768px) {
+  .upcoming-anime .slider-button {
+    width: 50px;
+    opacity: 0.9;
+  }
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .upcoming-anime .slider-button {
+    width: 40px;
+    opacity: 0.7;
+    background: rgba(0, 0, 0, 0.5);
+  }
+  
+  .upcoming-anime .slider-button:hover {
+    background: rgba(0, 0, 0, 0.7);
+  }
+}
+
+
+/* Responsive Breakpoints */
+@media (max-width: 1024px) {
+  .cards-container {
+    gap: 12px;
+    padding: 10px 1rem;
+  }
+  
+  .upcoming-card {
+    width: 220px;
+  }
+}
+
+@media (max-width: 768px) {
+  .upcoming-anime h4 {
+    padding: 0.8rem 1rem;
+  }
+  
+  .cards-container {
+    gap: 10px;
+    padding: 8px 1rem;
+  }
+  
+  .upcoming-card {
+    width: 200px;
+  }
+  
+  .slider-button {
+    width: 35px;
+    height: 35px;
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .upcoming-card {
+    width: 160px;
+  }
+  
+  .title-container {
+    padding: 0.8rem;
+    min-height: 70px;
+  }
+  
+  .details-container {
+    padding: 0.8rem;
+  }
+  
+  .slider-button {
+    display: none; /* Hide on very small screens */
+  }
+}
+
+
+
+.cyber-footer {
+  background: #0a0a0a;
+  color: #ffffff;
+  padding: 4rem 0;
+  position: relative;
+  border-top: 1px solid rgba(255, 0, 0, 0.3); /* Using #f00 in RGBA */
+  overflow: hidden;
+}
+
+.cyber-footer::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgb(255, 58, 58), transparent);
+}
+
+/* Container and Grid Layout */
+.footer-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2.5rem;
+  margin-bottom: 3rem;
+}
+
+/* Column Titles */
+.column-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  color: rgb(203, 0, 0); /* Pure red */
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  position: relative;
+}
+/* Link Styles */
+.footer-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-link {
+  color: rgba(255, 255, 255, 0.7);
+  text-decoration: none;
+  padding: 0.5rem 0;
+  display: block;
+  transition: all 0.3s ease;
+  position: relative;
+  padding-left: 1rem;
+}
+
+.footer-link::before {
+  content: '>';
+  position: absolute;
+  left: 0;
+  color: #f00;
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+
+.footer-link:hover {
+  color: #f00;
+  padding-left: 1.5rem;
+}
+
+.footer-link:hover::before {
+  opacity: 1;
+  left: -5px;
+}
+
+/* Social Media Icons */
+.social-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 45px);
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+
+.social-link {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  transition: all 0.3s ease;
+  color: white;
+  background: rgba(255, 0, 0, 0.1); /* Red tint */
+  border: 1px solid rgba(255, 0, 0, 0.3);
+}
+
+.social-link:hover {
+  background: #f00;
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(255, 0, 0, 0.4);
+}
+
+/* Call-to-Action Button */
+.trial-button {
+  background: linear-gradient(135deg, #f00 0%, #c00 100%);
+  border: none;
+  padding: 0.9rem 2rem;
+  color: white;
+  font-weight: 700;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-top: 1rem;
+}
+
+.trial-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(255, 0, 0, 0.4);
+}
+
+/* Footer Bottom Section */
+.footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(255, 0, 0, 0.2);
+  font-size: 0.9rem;
+}
+
+.legal-links {
+  display: flex;
+  gap: 1.5rem;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.legal-links a {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.legal-links a:hover {
+  color: #f00;
+}
+
+.sony-logo {
+  height: 28px;
+  filter: brightness(0) invert(1);
+  opacity: 0.8;
+  transition: opacity 0.3s ease;
+}
+
+.sony-logo:hover {
+  opacity: 1;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+  
+  .footer-bottom {
+    flex-direction: column;
+    gap: 1.5rem;
+    text-align: center;
+  }
+  
+  .legal-links {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .social-grid {
+    grid-template-columns: repeat(4, 40px);
+    gap: 0.8rem;
+  }
+  
+  .trial-button {
+    width: 100%;
+    justify-content: center;
+  }
+}
+.media-card {
+  width: 100%;
+  max-width: 1300px;
+  background-color: rgb(22, 22, 22);
+  color: white;
+  border-radius: 8px;
+  overflow: hidden;
+  font-family: Arial, sans-serif;
+  display: flex;
+  flex-wrap: wrap;
+  margin: auto;
+  gap: 20px;
+}
+
+.card-image {
+  width: 100%;
+  min-height: 400px;
+  background-color: #333;
+  flex: 1 1 100%;
+}
+
+.media-content {
+  width: 100%;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 100%;
+}
+
+.media-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.media-subtitle {
+  font-size: 0.9rem;
+  color: #aaa;
+  margin-bottom: 15px;
+}
+
+.media-description {
+  font-size: 0.9rem;
+  line-height: 1.4;
+  margin-bottom: 20px;
+  flex-grow: 1;
+}
+
+.media-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.btn-watch {
+  background-color: #f00;
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 4px;
+  font-weight: bold;
+  flex: 2;
+}
+
+.btn-watchlist {
+  background-color: #333;
+  color: white;
+  border: none;
+  padding: 12px 15px;
+  border-radius: 4px;
+  font-weight: bold;
+  flex: 1;
+}
+
+/* Medium screens (tablets) */
+@media (min-width: 768px) {
+  .media-card {
+    flex-wrap: nowrap;
+  }
+
+  .card-image {
+    width: 40%;
+    min-height: 100%;
+    flex: 0 0 40%;
+  }
+
+  .media-content {
+    width: 60%;
+    flex: 1;
+  }
+}
+
+/* Large screens (desktops) */
+@media (min-width: 1024px) {
+  .media-title {
+    font-size: 2rem;
+  }
+
+  .media-subtitle,
+  .media-description {
+    font-size: 1rem;
+  }
+
+  .btn-watch,
+  .btn-watchlist {
+    font-size: 1rem;
+  }
+}

@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Anime Watcher & Downloader</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" />
+  <link rel="shortcut icon" href="images/61K8CEhOguL.jpg" type="image/x-ico"  />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+</head>
+
+<body>
+  <section class="popular-anime">
+    <header>
+      <!-- Video Container -->
+      <div id="video-container" class="w-100 h-100">
+        <video id="video-player" class="w-100 h-100" autoplay loop playsinline>
+          <source id="video-source" src="" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+      </div>
+  
+      <!-- Navbar -->
+      <nav class="navbar navbar-expand-lg  px-3 px-md-5">
+        <div class="container-fluid">
+          <!-- Logo and Toggler -->
+          <div class="logo_ul">
+            <a class="navbar-brand" href="#">
+              <img src="images/ea55042297836e5ccaeecf193b9175c5-removebg-preview.png" alt="Logo" class="logo" />
+            </a>
+            <button
+              class="navbar-toggler"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#navbarNav"
+              aria-controls="navbarNav"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+            >
+              <span class="navbar-toggler-icon"></span>
+            </button>
+          </div>
+  
+          <!-- Navbar Links -->
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active text-light" href="#">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-light" href="#" id="series">Series</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-light" href="#" id="movie">Movies</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle text-light" href="#" id="categoriesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Categories
+                </a>
+                <div class="dropdown-menu dropdown-menu-dark" aria-labelledby="categoriesDropdown">
+                  <div class="container">
+                    <div class="row">
+                      <!-- 4 columns for the dropdown items -->
+                      <div class="col-md-3">
+                        <a class="dropdown-item" href="index3.html?genre=Action">Action</a>
+                        <a class="dropdown-item" href="index3.html?genre=Shonen">Shonen</a>
+                        <a class="dropdown-item" href="index3.html?genre=Seinen">Seinen</a>
+                        <a class="dropdown-item" href="index3.html?genre=Romance">Romance</a>
+                        <a class="dropdown-item" href="index3.html?genre=Psychological">Psychological</a>
+                      </div>
+                      <div class="col-md-3">
+                        <a class="dropdown-item" href="index3.html?genre=Fantasy">Fantasy</a>
+                        <a class="dropdown-item" href="index3.html?genre=Mecha">Mecha</a>
+                        <a class="dropdown-item" href="index3.html?genre=Slice of Life">Slice of Life</a>
+                        <a class="dropdown-item" href="index3.html?genre=Horror">Horror</a>
+                        <a class="dropdown-item" href="index3.html?genre=Supernatural">Supernatural</a>
+                      </div>
+                      <div class="col-md-3">
+                        <a class="dropdown-item" href="index3.html?genre=Sports">Sports</a>
+                        <a class="dropdown-item" href="index3.html?genre=Mystery">Mystery</a>
+                        <a class="dropdown-item" href="index3.html?genre=Comedy">Comedy</a>
+                        <a class="dropdown-item" href="index3.html?genre=Drama">Drama</a>
+                        <a class="dropdown-item" href="index3.html?genre=Thriller">Thriller</a>
+                      </div>
+                      <div class="col-md-3">
+                       
+                       
+                       
+                        <a class="dropdown-item" href="index3.html?genre=Historical">Historical</a>
+                        <a class="dropdown-item" href="index3.html?genre=Superhero">Superhero</a>
+                        <a class="dropdown-item" href="index3.html?genre=Sci-Fi">Sci-Fi</a>
+                        <a class="dropdown-item" href="index3.html?genre=Dark Fantasy">Dark Fantasy</a>
+                        <a class="dropdown-item" href="index3.html?genre=Adventure">Adventure</a>
+                       
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </li>
+            </ul>
+  
+           
+            <div class="search_user">
+              <input type="text" class="form-control bg-dark text-light" placeholder="Search..." id="search_input" />
+              <img
+                src="images/anime-head-silhouette-illustration-with-the-object-of-a-cool-young-man-free-vector.jpg"
+                alt="User profile picture"
+                class="rounded-circle ms-3"
+                style="width: 40px; height: 40px;"
+              />
+              <div class="search"></div>
+            </div>
+          </div>
+        </div>
+      </nav>
+
+
+      <div class="content">
+        <h1 id="title"></h1>
+        <p id="description">
+         
+        </p>
+        <div class="details">
+          <h6></h6>
+          <h5 id="gen"></h5>
+          <h4 id="date"></h4>
+          <h3 id="land"><span></span><i class="bi bi-star-fill"></i></h3>
+        </div>
+  
+        <div class="btns">
+          <a id="watch-now-button"><i  style="margin-right: 5px;" class="fas fa-play"></i> Watch Now</a>
+        </div>
+      </div>
+  
+      <!-- Popular Section -->
+      <section class="popular-section">
+        <h4>Popular</h4>
+        <button class="slider-button left-button">
+          <i class="bi bi-chevron-left"></i>
+        </button>
+        <button class="slider-button right-button">
+          <i class="bi bi-chevron-right"></i>
+        </button>
+  
+        <div class="cards"></div>
+      </section>
+    </header>
+  </section>
+
+  <section class="upcoming-anime">
+    <h4>trending Anime</h4>
+    <button class="slider-button left-button upcoming-left"><i class="bi bi-chevron-left"></i></button>
+    <div class="cards-container" id="upcoming-anime-cards"></div>
+    <button class="slider-button right-button upcoming-right"><i class="bi bi-chevron-right"></i></button>
+  </section>
+
+
+  <section class="upcoming-anime">
+    <h4>Classic 2000s</h4>
+    <button class="slider-button left-button classic-left"><i class="bi bi-chevron-left"></i></button>
+    <div class="cards-container" id="classic-anime-cards"></div>
+    <button class="slider-button right-button classic-right"><i class="bi bi-chevron-right"></i></button>
+  </section>
+
+
+
+
+<div class="media-card my-5">
+  <!-- Image on LEFT side -->
+  <div class="card-image" style=" background: url(images/thumb-1920-1054068.png) no-repeat center  center/cover;"></div>
+  
+  <!-- Content on RIGHT side -->
+  <div class="media-content">
+      <div class="media-title">solo leveling</div>
+      <div class="media-subtitle">Subtitled</div>
+      <div class="media-description">
+        Weakest E-rank hunter Sung Jin-Woo gains a mysterious system allowing him to level up after surviving a deadly double dungeon. As he grows stronger through quests and battles, Jin-Woo uncovers secrets about the gates spawning monsters and his own unique abilities. Transforming from underdog to overpowered shadow monarch, he protects humanity while navigating political conspiracies and otherworldly threats.
+      </div>
+      <div class="media-actions">
+          <button class="btn-watch"><a style="text-decoration: none; color: white;" target="_blank" href="https://anime3rb.com/episode/ore-dake-level-up-na-ken/1">  <i  style="margin-right: 5px;" class="fas fa-play"></i> START WATCHING</a></button>
+          <button class="btn-watchlist"> <i style="margin-right: 5px;" class="fas fa-grip-lines"></i>ADD TO WATCHLIST</button>
+      </div>
+  </div>
+</div>
+<div class="media-card my-5">
+  <!-- Image on LEFT side -->
+  <div class="card-image" style=" background: url(images/s9XfUPrxfqpxwtudnxuFmj-1200-80.jpg) no-repeat center  center/cover;"></div>
+  
+  <!-- Content on RIGHT side -->
+  <div class="media-content">
+      <div class="media-title">devil may cry</div>
+      <div class="media-subtitle">Subtitled</div>
+      <div class="media-description">
+        In a world plagued by demonic forces, Dante, a half-human, half-demon warrior, runs Devil May Cry, a business specializing in hunting down supernatural threats. As dark entities threaten to tip the balance between the human and demon realms, Dante must face powerful foes, uncover hidden conspiracies, and confront his own past. With allies and enemies alike drawn into the chaos, his journey becomes a relentless battle for survival and redemption.
+      </div>
+      <div class="media-actions">
+        <button class="btn-watch"><a style="text-decoration: none; color: white;" target="_blank" href="https://witanime.quest/episode/devil-may-cry-%d8%a7%d9%84%d8%ad%d9%84%d9%82%d8%a9-1/">  <i  style="margin-right: 5px;" class="fas fa-play"></i>START WATCHING</a></button>
+          <button class="btn-watchlist"> <i style="margin-right: 5px;" class="fas fa-grip-lines"></i>ADD TO WATCHLIST</button>
+      </div>
+  </div>
+</div>
+
+  <section class="upcoming-anime Romance">
+    <h4>Romance Anime</h4>
+    <button class="slider-button left-button romance-left"><i class="bi bi-chevron-left"></i></button>
+    <div class="cards-container" id="romance-anime-cards"></div>
+    <button class="slider-button right-button romance-right"><i class="bi bi-chevron-right"></i></button>
+  </section>
+
+  <section class="upcoming-anime manhwa">
+    <h4>trending manhwa</h4>
+    <button class="slider-button left-button manhwa-left"><i class="bi bi-chevron-left"></i></button>
+    <div class="cards-container" id="manhwa-anime-cards"></div>
+    <button class="slider-button right-button manhwa-right"><i class="bi bi-chevron-right"></i></button>
+  </section>
+
+  <section class="upcoming-anime manga">
+    <h4>trending manga</h4>
+    <button class="slider-button left-button manga-left"><i class="bi bi-chevron-left"></i></button>
+    <div class="cards-container" id="manga-anime-cards"></div>
+    <button class="slider-button right-button manga-right"><i class="bi bi-chevron-right"></i></button>
+  </section>
+
+  <div class="media-card my-5">
+    <!-- Image on LEFT side -->
+    <div class="card-image" style=" background: url(images/filters_quality\(96\)format\(webp\).webp) no-repeat center  center/cover;"></div>
+    
+    <!-- Content on RIGHT side -->
+    <div class="media-content">
+        <div class="media-title">one piece</div>
+        <div class="media-subtitle">Subtitled</div>
+        <div class="media-description">
+          Rubber-limbed pirate Monkey D. Luffy assembles a crew to find the legendary One Piece treasure and become King of the Pirates. From battling warlords to overthrowing corrupt kingdoms, the Straw Hats explore fantastical islands in the Grand Line. Their journey reveals ancient weapons, the Void Century's secrets, and the World Government's dark history in this decades-spanning epic about friendship and freedom.
+        </div>
+        <div class="media-actions">
+          <button class="btn-watch"><a style="text-decoration: none; color: white;" target="_blank" href="https://anime3rb.com/episode/one-piece/1">  <i  style="margin-right: 5px;" class="fas fa-play"></i>START WATCHING</a></button>
+            <button class="btn-watchlist"> <i style="margin-right: 5px;" class="fas fa-grip-lines"></i>ADD TO WATCHLIST</button>
+        </div>
+    </div>
+  </div>
+  <div class="media-card my-5">
+    <!-- Image on LEFT side -->
+    <div class="card-image" style=" background: url(images/jujutsu-kaisen-season-2-key-art.png) no-repeat center  center/cover;"></div>
+    
+    <!-- Content on RIGHT side -->
+    <div class="media-content">
+        <div class="media-title">jujutsu kaisen</div>
+        <div class="media-subtitle">Subtitled</div>
+        <div class="media-description">
+          After swallowing a cursed finger to save friends, high schooler Yuji Itadori becomes host to Ryomen Sukuna, the King of Curses. Enrolled at Tokyo Jujutsu High, Yuji trains with sorcerers Megumi and Nobara to collect Sukuna's fragments. Through deadly exorcisms and shocking betrayals, they confront curse users like Mahito while uncovering corruption in the jujutsu world, culminating in the apocalyptic Shibuya Incident.
+        </div>
+        <div class="media-actions">
+          <button class="btn-watch"><a style="text-decoration: none; color: white;" target="_blank" href="https://anime3rb.com/episode/jujutsu-kaisen/1">  <i  style="margin-right: 5px;" class="fas fa-play"></i>START WATCHING</a></button>
+            <button class="btn-watchlist"> <i style="margin-right: 5px;" class="fas fa-grip-lines"></i>ADD TO WATCHLIST</button>
+        </div>
+    </div>
+  </div>
+  
+
+
+
+
+
+  <footer class="cyber-footer">
+    <div class="footer-container">
+      <div class="footer-grid">
+        <!-- Navigation Column -->
+        <div class="footer-column">
+          <h3 class="column-title">Navigation</h3>
+          <ul class="footer-links">
+            <li><a href="#" class="footer-link">Browse Provider</a></li>
+            <li><a href="#" class="footer-link">Browser Standards</a></li>
+            <li><a href="#" class="footer-link">Release Calendar</a></li>
+            <li><a href="#" class="footer-link">Games</a></li>
+          </ul>
+        </div>
+  
+        <!-- Connect Column -->
+        <div class="footer-column">
+          <h3 class="column-title">Connect With Us</h3>
+          <div class="social-grid">
+            <a target="_blank" href="https://www.instagram.com/mohamed1103ahmed?igsh=MWFibXFkYXE3c3Zwcg==" class="social-link instagram">
+              <i class="bi bi-instagram"></i>
+            </a>
+            <a target="_blank" href="https://www.linkedin.com/in/mohamed-ahmed-608417308?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" class="social-link linkedin">
+              <i class="bi bi-linkedin"></i>
+            </a>
+            <a target="_blank" href="https://www.facebook.com/share/1963wUhBVT/" class="social-link facebook">
+              <i class="bi bi-facebook"></i>
+            </a>
+            <a target="_blank" href="https://x.com/Mohamed13526879?t=lhAo5Bfn-hrVUbrX-qWo0w&s=09" class="social-link twitter">
+              <i class="bi bi-twitter"></i>
+            </a>
+          </div>
+          <button class="trial-button">
+            Start Free Trial
+            <i class="bi bi-arrow-right"></i>
+          </button>
+        </div>
+  
+        <!-- Company Column -->
+        <div class="footer-column">
+          <h3 class="column-title">Cumchyndi</h3>
+          <ul class="footer-links">
+            <li><a href="#" class="footer-link">About</a></li>
+            <li><a href="#" class="footer-link">Help Center</a></li>
+            <li><a href="#" class="footer-link">Privacy Policy</a></li>
+            <li><a href="#" class="footer-link">Careers</a></li>
+          </ul>
+        </div>
+  
+        <!-- Account Column -->
+        <div class="footer-column">
+          <h3 class="column-title">Account</h3>
+          <ul class="footer-links">
+            <li><a href="#" class="footer-link">Credit Account</a></li>
+            <li><a href="#" class="footer-link">Login</a></li>
+            <li><a href="#" class="footer-link">Manage Profile</a></li>
+            <li><a href="#" class="footer-link">Subscription</a></li>
+          </ul>
+        </div>
+      </div>
+  
+      <div class="footer-bottom">
+        <div class="legal-links">
+          <span>© 2023 Cumchyndi, LLC</span>
+          <a href="#">Terms of Use</a>
+          <a href="#">Cookie Policy</a>
+          <a href="#">Ad Choices</a>
+        </div>
+        <div class="branding">
+          <img src="images/imgbin-sony-logo-sony-FVmt97HgXBDBDbYikqaz3xE54-removebg-preview.png" alt="Sony Pictures" class="sony-logo">
+        </div>
+      </div>
+    </div>
+  </footer>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/script.js"></script>
+</body>
+
+</html>
